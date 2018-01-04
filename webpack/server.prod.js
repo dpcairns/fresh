@@ -1,8 +1,8 @@
-const fs = require('fs')
-const path = require('path')
-const webpack = require('webpack')
+const fs = require('fs');
+const path = require('path');
+const webpack = require('webpack');
 
-const res = p => path.resolve(__dirname, p)
+const res = p => path.resolve(__dirname, p);
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
 // to still bundle `react-universal-component`, `webpack-flush-chunks` and
@@ -17,9 +17,9 @@ const externals = fs
       )
   )
   .reduce((externals, mod) => {
-    externals[mod] = `commonjs ${mod}`
-    return externals
-  }, {})
+    externals[mod] = `commonjs ${mod}`;
+    return externals;
+  }, {});
 
 module.exports = {
   name: 'server',
@@ -66,4 +66,4 @@ module.exports = {
       }
     })
   ]
-}
+};

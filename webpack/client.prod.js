@@ -1,8 +1,8 @@
-const path = require('path')
-const webpack = require('webpack')
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
-const StatsPlugin = require('stats-webpack-plugin')
-const AutoDllPlugin = require('autodll-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const StatsPlugin = require('stats-webpack-plugin');
+const AutoDllPlugin = require('autodll-webpack-plugin');
 
 module.exports = {
   name: 'client',
@@ -87,4 +87,4 @@ module.exports = {
       }
     })
   ]
-}
+};

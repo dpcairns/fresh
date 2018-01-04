@@ -37,16 +37,7 @@ module.exports = {
     alert: true
   },
   rules: {
-    'import/extensions': [
-      'error',
-      'always',
-      {
-        js: 'never',
-        jsx: 'never',
-        styl: 'never',
-        css: 'never'
-      }
-    ],
+    'import/extensions': [0],
     'no-shadow': 0,
     'no-use-before-define': 0,
     'no-param-reassign': 0,
@@ -60,7 +51,7 @@ module.exports = {
     camelcase: 1,
     'prefer-template': 1,
     'react/no-array-index-key': 1,
-    'global-require': 1,
+    'global-require': 0,
     'react/jsx-indent': 1,
     'dot-notation': 1,
     'import/no-named-default': 1,
@@ -68,12 +59,14 @@ module.exports = {
     'flowtype/no-weak-types': 1,
     'consistent-return': 0,
     'import/prefer-default-export': 1,
-    'no-console': 1,
+    'function-paren-newline': 0,
+    'no-console': 0,
     'jsx-a11y/no-static-element-interactions': 1,
     'no-case-declarations': 1,
-    semi: [2, 'never'],
+    semi: [2, 'always'],
     'flowtype/semi': [2, 'never'],
     'jsx-quotes': [2, 'prefer-single'],
+    'react/jsx-curly-spacing': [0],
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],
     'spaced-comment': [2, 'always', { markers: ['?'] }],
     'arrow-parens': [2, 'as-needed', { requireForBlockBody: false }],

@@ -1,44 +1,28 @@
-import { redirect } from 'redux-first-router'
+import { redirect } from 'redux-first-router';
+import { fetchYummyThings } from '../server/fakeApi.js';
 
 export default {
   HOME: '/',
 
-  LIST: {
-    path: '/list/:category',
+  DETAIL: {
+    path: '/detail/:category',
     thunk: async (dispatch, getState) => {
-      const { payload: { category } } = getState().location
-      const packages = await fetch(`/api/category/${category}`)
+      const { payload: { category } } = getState().location;
+      const yummyThings = await fetchYummyThings(`/api/category/${category}`);
 
-      if (packages.length === 0) {
+      if (yummyThings.length === 0) {
         const action = redirect({
-          type: 'LIST',
+          type: 'DETAIL',
           payload: { category: 'redux' }
-        })
+        });
 
-        return dispatch(action)
+        return dispatch(action);
       }
 
-      dispatch({ type: 'PACKAGES_FETCHED', payload: { category, packages } })
+      dispatch({
+        type: 'YUMMY_THINGS_FETCHED',
+        payload: { category, yummyThings }
+      });
     }
   }
-}
-
-// this is essentially faking/mocking the fetch api
-// pretend this actually requested data over the network
-
-const fetch = async path => {
-  const category = path.replace('/api/category/', '')
-
-  switch (category) {
-    case 'redux':
-      return ['reselect', 'recompose', 'redux-first-router']
-    case 'react':
-      return [
-        'react-router',
-        'react-transition-group',
-        'react-universal-component'
-      ]
-    default:
-      return []
-  }
-}
+};
